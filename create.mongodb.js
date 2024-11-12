@@ -78,11 +78,11 @@ db.createCollection("Product", {
           minItems: 0,
           items: {
             bsonType: "object",
-            required: ["user_id", "rating"],
+            required: ["user_oid", "rating"],
             properties: {
-              user_id: {
-                bsonType: "string",
-                description: "must be a string and is required"
+              user_oid: {
+                bsonType: "objectId",
+                description: "must be an ObjectId and is required"
               },
               rating: {
                 bsonType: "int",
@@ -104,14 +104,14 @@ db.createCollection("Transaction", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["user_id", "product_id", "quantity", "date"],
+      required: ["user_oid", "product_oid", "quantity", "date"],
       properties: {
         user_oid: {
-          bsonType: "object",
+          bsonType: "objectId",
           description: "must be an objectId and is required"
         },
         product_oid: {
-          bsonType: "object",
+          bsonType: "objectId",
           description: "must be an ObjectId and is required"
         },
         quantity: {
