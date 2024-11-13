@@ -34,8 +34,8 @@ function insertTransaction(userName, productName, quantity) {
     }
 
     db.Transaction.insertOne({
-        user_id: user._id,
-        product_id: product._id,
+        user_oid: user._id,
+        product_oid: product._id,
         quantity: quantity,
         date: new Date()
     });
@@ -43,9 +43,9 @@ function insertTransaction(userName, productName, quantity) {
     subtractProductQuantity(product._id, quantity);
 }
 
-function subtractProductQuantity(product_id, quantity) {
+function subtractProductQuantity(product_oid, quantity) {
     db.Product.updateOne(
-        { _id: product_id },
+        { _id: product_oid },
         { $inc: { available_quantity: -quantity } }
     );
 }

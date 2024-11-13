@@ -27,7 +27,7 @@ function getTotalSalesByCategory() {
     {
       $lookup: {
         from: "Product",
-        localField: "product_id",
+        localField: "product_oid",
         foreignField: "_id",
         as: "productDetails"
       }

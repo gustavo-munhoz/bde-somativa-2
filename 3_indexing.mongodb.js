@@ -36,12 +36,12 @@ function createProductPriceIndex() {
   db.Product.createIndex({ price: 1 });
 }
 
-// Index in product ID within transactions
+// Index in product oID within transactions
 // is necessary to optimize queries that need to find
 // all transactions associated with a specific product,
 // such as in sales or inventory reports.
 function createTransactionProductIndex() {
-  db.Transaction.createIndex({ "products.product_id": 1 });
+  db.Transaction.createIndex({ "products.product_oid": 1 });
 }
 
 // Index in transaction date is critical
